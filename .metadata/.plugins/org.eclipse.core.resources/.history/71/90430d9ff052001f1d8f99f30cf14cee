@@ -1,0 +1,26 @@
+package com.healsmart.services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.healsmart.dtos.DoctorDTO;
+import com.healsmart.dtos.PatientDTO;
+@Service
+@Transactional
+public class DoctorServiceImpl implements DoctorService {
+
+	@Override
+	public List<DoctorDTO> getAllDoctors() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updatePatientDetails(PatientDTO patientDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+  
+}

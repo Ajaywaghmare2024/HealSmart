@@ -1,0 +1,5 @@
+package com.healsmart.services;
+
+public interface DoctorService {
+
+}

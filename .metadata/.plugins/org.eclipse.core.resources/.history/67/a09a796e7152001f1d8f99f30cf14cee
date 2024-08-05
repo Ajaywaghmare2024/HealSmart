@@ -1,0 +1,10 @@
+package com.app.entities;
+
+public class MedicineAssigned {
+    private Long medicineAssignId;
+    private Patient patient;
+    private  Medicine medicine;
+    private String prescription;
+    private int medicineQty;
+    
+}

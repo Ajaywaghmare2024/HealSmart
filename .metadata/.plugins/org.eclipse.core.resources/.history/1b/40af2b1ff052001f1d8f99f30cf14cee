@@ -1,0 +1,5 @@
+package com.healsmart.services;
+
+public class DoctorServiceImpl implements DoctorService {
+  
+}

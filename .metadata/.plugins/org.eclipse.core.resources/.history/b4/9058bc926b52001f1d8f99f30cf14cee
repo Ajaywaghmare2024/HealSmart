@@ -1,0 +1,112 @@
+package com.blogs.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.blogs.dto.ApiResponce;
+import com.blogs.entities.Category;
+import com.blogs.service.CategoryService;
+
+@RestController
+@RequestMapping("/categories")
+public class CategoryController {
+	@Autowired // bytype
+	private CategoryService categoryService;
+
+	public CategoryController() {
+		// TODO Auto-generated constructor stub
+		System.out.println("in ctor" + getClass());
+
+	}
+
+	/*
+	 * 1. Get All Categories Design end point of REST API URL-
+	 * http://host:port/categories Method - GET payload -(request data -None) resp-
+	 * List<Category> (sent from Restcontroller --> D.s --> marshilling (ser:
+	 * Java--- > JSON-- will send ))
+	 * 
+	 * 
+	 */
+	@GetMapping
+	public List<Category> listAllCategories() {
+		System.out.println("in list All cate" + getClass());
+         
+		return categoryService.getAllCategory();
+
+	}
+
+	/*
+	 * Design end point of REST API to add adding new category(create) URL-
+	 * http://host:port/categories Method - Post payload -(request data -) category
+	 * details (name n desc ):Category entity resp- @responceBody -- Category (with
+	 * generated id) (sent from Restcontroller --> D.s --> marshilling (ser: Java---
+	 * > JSON-- will send --- > Java--> ))
+	 * 
+	 */
+	@PostMapping
+	public Category addNewCategory(@RequestBody Category category) {
+		System.out.println("in add new category" + getClass());
+		return categoryService.addNewCategory(category);
+
+	}
+	/*
+	 * Design end point of REST API to delete existing category category(Delete)
+	 * URL- http://host:port/categories/{categoryId} (URI template variable | path
+	 * variable) Method - DELETE
+	 * 
+	 * payload -(request data -) null resp- @responceBody -- plain string message
+	 * (sent from Restcontroller --> D.s --> marshilling (ser: Java--- > JSON-- will
+	 * send ))
+	 */
+
+	@DeleteMapping("/{categoryId}")
+	// @ Path variable -method annotation ,to bind incoming path to
+	// method args
+	public ApiResponce deleteCategoryDetails(@PathVariable Long categoryId) {
+
+		System.out.println("in delete category" + categoryId);
+		return new ApiResponce(categoryService.deleteCategory(categoryId));
+
+	}
+
+	/*
+	 * 
+	 * Design end point of REST API to getting existing category category(Delete)
+	 * URL- http://host:port/categories/{categoryId} (URI template variable | path
+	 * variable) Method - GET
+	 * 
+	 * payload -(request data -) none resp- @responceBody ---- category (sent from
+	 * Restcontroller --> D.s --> marshilling (ser: Java--- > JSON-- will send ))
+	 * 
+	 */
+	@GetMapping("/{catId}")
+	public Category getCategoryDetails(@PathVariable Long catId) {
+		System.out.println("in get category Id" + getClass());
+		return categoryService.getCategoryDetails(catId);
+		
+
+	}
+	/*
+	 * 
+	 * Design end point of REST API to updating existing category category(PUT) URL-
+	 * http://host:port/categories/{categoryId} (URI template variable | path
+	 * variable) Method - PUT
+	 * 
+	 * payload -(request data -) Category resp- @responceBody ---- category
+	 */
+	@PutMapping
+	public Category updateCategoryDeatils(@RequestBody Category category) {
+		System.out.println("in update "+category);
+	
+		return categoryService.updateCategoryDetails(category);
+	}
+}

@@ -1,0 +1,19 @@
+package com.healsmart.services;
+
+import com.healsmart.dtos.DoctorVisitDTO;
+
+public class DoctorVisitServiceImpl  implements DoctorVisitService{
+
+	@Override
+	public int addVisit(DoctorVisitDTO visitDTO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void increaseVisitCount(DoctorVisitDTO visitDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

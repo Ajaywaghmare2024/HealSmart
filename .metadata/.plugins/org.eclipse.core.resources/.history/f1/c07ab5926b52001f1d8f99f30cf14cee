@@ -1,0 +1,22 @@
+package com.blogs.service;
+
+import java.util.List;
+
+import com.blogs.entities.Category;
+
+public interface CategoryService {
+   // get all details
+	List<Category> getAllCategory(); 
+	
+	// add new category
+	Category addNewCategory(Category newCategory);
+	// delete category
+	String deleteCategory(Long catId);
+	// get cat ids
+	Category getCategoryDetails(Long categoryId);
+	
+	// update the 
+	Category updateCategoryDetails(Category category);
+	
+
+}

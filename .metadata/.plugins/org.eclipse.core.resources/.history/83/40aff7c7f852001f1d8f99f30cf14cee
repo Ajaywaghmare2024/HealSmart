@@ -1,0 +1,52 @@
+package com.healsmart.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.healsmart.dtos.EmployeeDTO;
+import com.healsmart.entities.Employee;
+import com.healsmart.repositories.DoctorRepository;
+import com.healsmart.repositories.EmployeeRepository;
+import com.healsmart.repositories.UserRepository;
+
+@Service
+@Transactional
+public class EmployeeServiceImpl implements EmployeeService{
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private DoctorRepository doctorRepository;
+	
+
+	@Override
+	public Employee addEmployee(EmployeeDTO empDTO) {
+		if(!userRepository.existsByEmail())
+		return null;
+	}
+
+	@Override
+	public List<EmployeeDTO> getAllEmployees() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateEmployee(EmployeeDTO employeeDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteUserByCellNoAndUserId(EmployeeDTO userData) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
