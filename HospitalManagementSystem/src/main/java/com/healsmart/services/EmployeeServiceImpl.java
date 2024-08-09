@@ -70,7 +70,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 		if(employeeRepository.existsById(employeeDTO.getEmpId()) ) {
 			Employee employeeToUpdate =employeeRepository.getById(employeeDTO.getEmpId());
 			
-			Long updateCount=userRepository.updateFirstNameLastNameDobCellNo(employeeDTO.getFirstName(), employeeDTO.getLastName(), employeeDTO.getDob(), employeeDTO.getCellNo(), employeeToUpdate.getUser().getUserId());
+			Long updateCount=userRepository.updateFirstNameLastNameDobCellNo
+					(employeeDTO.getFirstName(), 
+					employeeDTO.getLastName(), 
+					employeeDTO.getDob(), 
+					employeeDTO.getCellNo(), 
+					employeeToUpdate.getUser().getUserId());
 			System.out.println("updated row : "+ updateCount);
 			
 		}else {
@@ -80,8 +85,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public void deleteUserByCellNoAndUserId(EmployeeDTO userData) throws NoSuchEmployeeExistsException{
-if(employeeRepository.existsById(userData.getEmpId()) ) {
+	public int deleteUserByCellNoAndUserId(EmployeeDTO userData) throws NoSuchEmployeeExistsException{
+            if(employeeRepository.existsById(userData.getEmpId()) ) {
 			
 			Employee employeeToDelete=employeeRepository.getById(userData.getEmpId());
 			
@@ -101,6 +106,7 @@ if(employeeRepository.existsById(userData.getEmpId()) ) {
 		}else {
 			throw new NoSuchEmployeeExistsException("Employee with id = "+userData.getEmpId()+" does not exist");
 		}
+       return 1;
 		
 		
 	}

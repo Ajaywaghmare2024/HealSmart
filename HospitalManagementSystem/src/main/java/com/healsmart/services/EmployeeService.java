@@ -11,6 +11,6 @@ public interface EmployeeService {
    
    public void updateEmployee(EmployeeDTO employeeDTO);
    
-   public void deleteUserByCellNoAndUserId(EmployeeDTO userData);
+   public int deleteUserByCellNoAndUserId(EmployeeDTO userData);
    
 }

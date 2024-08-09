@@ -29,7 +29,7 @@ public class DoctorServiceImpl implements DoctorService {
 	private DoctorRepository doctorRepository;
 	
 	@Autowired
-	private PatientRepository patientRepository;
+	 PatientRepository patientRepository;
 	
 
 	@Override

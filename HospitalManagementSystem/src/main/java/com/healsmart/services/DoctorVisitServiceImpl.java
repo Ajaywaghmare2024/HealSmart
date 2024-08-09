@@ -38,7 +38,7 @@ public class DoctorVisitServiceImpl  implements DoctorVisitService{
 
 		DoctorVisit visit=doctorVisitRepository.getVisitsByPatIdAndDoctorId
 				(visitDTO.getPatientId(),visitDTO.getDoctorId());
-		visit.setVisit(visit.getVisit()+1);
+		visit.setVisits(visit.getVisits()+1);
 		doctorVisitRepository.save(visit);
 
 		

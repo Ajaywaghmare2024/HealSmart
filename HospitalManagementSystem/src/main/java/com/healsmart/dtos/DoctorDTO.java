@@ -27,7 +27,7 @@ public class DoctorDTO {
 
 			createDoctorDto.setFirstName(doctor.getEmployee().getUser().getFirstName());
 			createDoctorDto.setLastName(doctor.getEmployee().getUser().getLastName());
-			createDoctorDto.setDoctorId(doctor.getDoctor_id());
+			createDoctorDto.setDoctorId(doctor.getDoctorId());
 			createDoctorDtoList.add(createDoctorDto);
 //			
 
