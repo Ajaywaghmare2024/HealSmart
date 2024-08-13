@@ -22,7 +22,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
- @NoArgsConstructor @Getter @Setter @ToString @AllArgsConstructor@JsonInclude(value = Include.NON_NULL)
+ @NoArgsConstructor 
+ @Getter @Setter @ToString 
+ @AllArgsConstructor@JsonInclude(value = Include.NON_NULL)
 public class EmployeeUserDataBacking {
 	
 	    private int userId;
@@ -37,8 +39,8 @@ public class EmployeeUserDataBacking {
 		private String securityAnswer;
 		//to generate the jwt token
 		private String token;
-//*********************************************************************
-		
+
+		/* Employee fields*/
 		private int empId;
 		@DateTimeFormat(pattern = "yyyy-MM-dd")
 		private Date dob;
@@ -50,18 +52,39 @@ public class EmployeeUserDataBacking {
 		private int doctorId;
 		
 		
-//*********************************************************************
+
 		@JsonProperty(access = Access.WRITE_ONLY)
 		public Employee getEmployeeFromData() {
 			Employee employee= new Employee(dob, hireDate, salary);
-			User user =new User(firstName, lastName, email, password, role, cellNo, securityQuestion, securityAnswer);
+			User user =new User(firstName, lastName, email, password, role, 
+					cellNo,securityQuestion, securityAnswer);
 			employee.setUser(user);
 			return employee;
 			
 		}
-//*********************************************************************
+		
+		
+		
+		//******************************NEW USER ADD *************************
+				
+				public static EmployeeUserDataBacking createUser(User user) {
+					
+						
+						EmployeeUserDataBacking validUser=new  EmployeeUserDataBacking();
+						validUser.setEmail(user.getEmail());
+						validUser.setRole(user.getRole());
+						validUser.setPassword(user.getPassword());
+						if(user.getRole().equals("patient")) {
+							validUser.setPatId(user.getPatient().getId());
+						}
+						if(user.getRole().equals("doctor"))
+							validUser.setDoctorId(user.getEmployee().getDoctor().getId());
+						return validUser;
+					}
+
+                                  /* Add  New Employee */
 		public static List<EmployeeUserDataBacking> createEmployee(List<Employee> employees){
-			List<EmployeeUserDataBacking> employeeDetails= new ArrayList<EmployeeUserDataBacking>();
+			List<EmployeeUserDataBacking> employeeDetails= new ArrayList<>();
 			for(Employee e:employees) {
 				EmployeeUserDataBacking emp= new EmployeeUserDataBacking();
 				emp.setFirstName(e.getUser().getFirstName());
@@ -79,24 +102,7 @@ public class EmployeeUserDataBacking {
 			
 			return employeeDetails;
 		}
-		
-//***************************************************************************
-		
-		public static EmployeeUserDataBacking createUser(User user) {
-			
-				
-				EmployeeUserDataBacking validUser=new  EmployeeUserDataBacking();
-				validUser.setEmail(user.getEmail());
-				validUser.setRole(user.getRole());
-				validUser.setPassword(user.getPassword());
-				if(user.getRole().equals("patient")) {
-					validUser.setPatId(user.getPatient().getId());
-				}
-				if(user.getRole().equals("doctor"))
-					validUser.setDoctorId(user.getEmployee().getDoctor().getId());
-				return validUser;
-			}
-
+	
 ///*****************************to update an employee*********************
 		public static Employee updateEmployee(int userId,EmployeeUserDataBacking userData) {
 			Employee updatedEmployee=new Employee();

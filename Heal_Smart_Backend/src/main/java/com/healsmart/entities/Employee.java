@@ -23,11 +23,14 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.ToString.Exclude;
 
-@Entity @Table(name = "employees")@Getter @Setter @ToString @JsonInclude(value = Include.NON_NULL)
+@Entity @Table(name = "employees")
+@Getter 
+@Setter @ToString @JsonInclude(value = Include.NON_NULL)
 public class Employee {
-	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id   
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+	        
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date dob;

@@ -12,7 +12,11 @@ public interface IWardDao extends JpaRepository<Ward, Integer> {
 	//under scores in name are used for easyness only no other intention
 	@Modifying
 	@Query(value = "insert into wards values (:id, :type, :charges, :availability, :max_capacity)",nativeQuery = true)
-	int insertIntoWardTable( @Param("id")int id,@Param("type")String type,@Param("charges")double charges,@Param("availability")double availability,@Param("max_capacity")double max_capacity);
+	int insertIntoWardTable( @Param("id")int id,
+			@Param("type")String type,
+			@Param("charges")double charges,
+			@Param("availability")double availability,
+			@Param("max_capacity")double max_capacity);
 	
 	@Query(value="select id from wards where type=:type",nativeQuery = true)
 	int getWardIdByTypeOfWard(String type);

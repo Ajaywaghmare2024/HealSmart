@@ -34,19 +34,44 @@ public class EmployeeServices {
 		if(!userDao.existsByEmail(userData.getEmail())) {
 			if(userData.getRole().equalsIgnoreCase("doctor")) {
 				
-				userDao.insertIntoUsers(0, userData.getFirstName(), userData.getLastName(), userData.getEmail(), userData.getPassword(), userData.getCellNo(), userData.getRole(), userData.getSecurityQuestion(), userData.getSecurityAnswer());
+				userDao.insertIntoUsers(0, userData.getFirstName(),
+						userData.getLastName(), 
+						userData.getEmail(),
+						userData.getPassword(),
+						userData.getCellNo(), 
+						userData.getRole(), 
+						userData.getSecurityQuestion(),
+						userData.getSecurityAnswer());
 				User user=userDao.findByEmail(userData.getEmail());//to get userId
 				System.out.println("user id : "+user.getId());
-				int updateCount=employeeDao.insertIntoEmployeesTable(0, user.getId(), userData.getDob(), userData.getHireDate(), userData.getSalary());
+				
+				
+				int updateCount=employeeDao.insertIntoEmployeesTable(0, user.getId(),
+						userData.getDob(),
+						userData.getHireDate(),
+						userData.getSalary());
 					int empId=employeeDao.getEmpIdByEmail(userData.getEmail());
 					System.out.println("emp id : "+empId);
+					
 				doctorDao.insertIntoDoctorTable(0, empId, userData.getDoctorCharges());
 				return updateCount;
 			}
 			else {
-				userDao.insertIntoUsers(0, userData.getFirstName(), userData.getLastName(), userData.getEmail(), userData.getPassword(), userData.getCellNo(), userData.getRole(), userData.getSecurityQuestion(), userData.getSecurityAnswer());
+				userDao.insertIntoUsers(0, userData.getFirstName(), 
+						userData.getLastName(), 
+						userData.getEmail(), 
+						userData.getPassword(), 
+						userData.getCellNo(), 
+						userData.getRole(), 
+						userData.getSecurityQuestion(),
+						userData.getSecurityAnswer());
+				
+				
 				User user=userDao.findByEmail(userData.getEmail());//to get userId
-				int updateCount=employeeDao.insertIntoEmployeesTable(0, user.getId(), userData.getDob(), userData.getHireDate(), userData.getSalary());
+				int updateCount=employeeDao.insertIntoEmployeesTable(0, user.getId(), 
+						userData.getDob(),
+						userData.getHireDate(), 
+						userData.getSalary());
 				return updateCount;
 			}
 			

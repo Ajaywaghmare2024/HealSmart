@@ -25,6 +25,7 @@ import com.healsmart.spring_security.UserDetailsService;
 public class UserController {
 	@Autowired
 	UserServices  services;
+	
 	@Autowired
     private JWTUtility jwtUtility;
 

@@ -28,6 +28,8 @@ public class AuthenticateController {
 
     @Autowired
     private UserDetailsService userService;
+    
+    
 	@PostMapping("api/authenticate")
     public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception{
 

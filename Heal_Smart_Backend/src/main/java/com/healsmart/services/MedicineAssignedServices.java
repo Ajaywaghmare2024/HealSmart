@@ -36,10 +36,7 @@ public class MedicineAssignedServices {
 	public void addMedicineToPatient(MedicineAssignedDataBackinBean medicineData) throws NoSuchMedicineExistsException {
 		
 			medicineAssingedDao.addIntoMedicineAssigned(medicineData.getPatId(), medicineData.getMedicineId(), medicineData.getMedicinePrescription(), medicineData.getMedicineQty());
-		
-		
-		
-	}
+		}
 	
 	public void removeMedicineOfPatient(int medicineAssignId) {
 		medicineAssingedDao.deleteById(medicineAssignId);

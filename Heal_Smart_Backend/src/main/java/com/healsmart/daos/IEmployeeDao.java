@@ -13,9 +13,14 @@ public interface IEmployeeDao extends JpaRepository<Employee,Integer> {
 
 		@Modifying
 		@Query(value="insert into employees values(:id,:userId,:dob,:hireDate,:salary)",nativeQuery = true)
-		int insertIntoEmployeesTable(@Param("id") int id,@Param("userId") int userId,@Param("dob") Date dob,@Param("hireDate")Date hireDate,@Param("salary") double salary);
+		int insertIntoEmployeesTable(@Param("id") int id,
+				@Param("userId") int userId,
+				@Param("dob") Date dob,
+				@Param("hireDate")Date hireDate,
+				@Param("salary") double salary);
 		
-		@Query(value="select id from employees where user_id=(select id from users where email= :email)",nativeQuery = true)
+		@Query(value="select id from employees where user_id="
+				+ "(select id from users where email= :email)",nativeQuery = true)
 		int getEmpIdByEmail(@Param("email")String email);
 
 }

@@ -10,7 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-@Getter@Setter@NoArgsConstructor@AllArgsConstructor@ToString
+@Getter
+@Setter@NoArgsConstructor
+@AllArgsConstructor@ToString
 public class DoctorDataBackinBean {
 	private int doctorId;
 	private String firstName;
@@ -27,10 +29,7 @@ public class DoctorDataBackinBean {
 			createDoctorDto.setLastName(doctor.getEmployee().getUser().getLastName());
 			createDoctorDto.setDoctorId(doctor.getId());
 			createDoctorDtoList.add(createDoctorDto);
-//			createDoctorDto.setFirstName(doctor.getEmployee().getUser().getFirstName());
-//			createDoctorDto.setLastName(doctor.getEmployee().getUser().getLastName());
-//			createDoctorDto.setDoctorId(doctor.getId());
-//			createDoctorDtoList.add(createDoctorDto);
+
 			
 		}
 		

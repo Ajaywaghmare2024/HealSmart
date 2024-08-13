@@ -26,17 +26,19 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.ToString.Exclude;
 
-@Entity@Data
-@Table(name = "users")@Getter @Setter @NoArgsConstructor @ToString@JsonInclude(value = Include.NON_NULL)
+@SuppressWarnings("serial")
+@Entity
+@Data
+@Table(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@JsonInclude(value = Include.NON_NULL)
 public class User implements UserDetails {
 
-//	+---------+------------+------------+-------------------+----------+------------+------------+
-//	| user_userId | first_name | last_name  | email             | password | role       | cell_no    |
-//	+---------+------------+------------+-------------------+----------+------------+------------+
-//	|       1 | deepak     | dhormare   | deepak@gmail.com  | 1234     | admin      | 8793031484 |
-//	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -46,32 +48,28 @@ public class User implements UserDetails {
 	private String cellNo;
 	private String securityQuestion;
 	private String securityAnswer;
-	
-	
-	
+
 	@Exclude
-	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	private Employee employee;
-	
+
 	@Exclude
-	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
-	private Patient patient ;
-	
-	
-	//***************connection to employee 
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	private Patient patient;
+
+	// ***************connection to employee
 	public void addEmployee(Employee e) {
-		this.employee=e;
+		this.employee = e;
 		this.employee.setUser(this);
-		
+
 	}
-	//***************connection to patient 
+
+	// ***************connection to patient
 	public void addPatient(Patient p) {
-		this.patient=p;
+		this.patient = p;
 		this.patient.setUser(this);
-		
+
 	}
-
-
 
 	public User(String firstName, String lastName, String email, String password, String role, String cellNo,
 			String securityQuestion, String securityAnswer) {
@@ -86,41 +84,41 @@ public class User implements UserDetails {
 		this.securityAnswer = securityAnswer;
 	}
 
+	
 
-	//***********created for testing purpose
-	public User(int id, String firstName) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> grantedAuthorities=new ArrayList<GrantedAuthority>();
-		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+this.getRole().toUpperCase()));
+		List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + this.getRole().toUpperCase()));
 
 		return grantedAuthorities;
-		
+
 	}
+
 	@Override
 	public String getUsername() {
-		
+
 		return email;
 	}
+
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub

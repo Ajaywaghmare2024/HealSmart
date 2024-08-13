@@ -18,7 +18,8 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.ToString.Exclude;
 
-@Entity @Table(name = "wards")@Getter@Setter@NoArgsConstructor@AllArgsConstructor@ToString
+@Entity @Table(name = "wards")
+@Getter@Setter@NoArgsConstructor@AllArgsConstructor@ToString
 public class Ward {
 	@Id@GeneratedValue(strategy =GenerationType.IDENTITY )
 	private int id;
@@ -41,7 +42,8 @@ public class Ward {
 		
 	}
 
-	public Ward(int id, String type, double charges, double availability, double maxCapacity) {
+	public Ward(int id, String type, double charges, 
+			double availability, double maxCapacity) {
 		super();
 		this.id = id;
 		this.type = type;
