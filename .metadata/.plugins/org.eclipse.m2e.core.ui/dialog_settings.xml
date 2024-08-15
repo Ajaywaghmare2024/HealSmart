@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\HealSmart\HealSmart\Heal_Smart_Backend"/>
 			<item value="D:\HealSmart\spring_boot_backend_template"/>
 		</list>
 		<list key="projectNameTemplate">

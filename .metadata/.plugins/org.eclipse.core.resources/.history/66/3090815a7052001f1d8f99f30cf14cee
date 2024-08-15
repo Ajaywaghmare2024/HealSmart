@@ -1,9 +1,0 @@
-package com.app.entities;
-
-public class DoctorVisit {
-   private Long Doctor_Visit_id;
-   private Patient patient;
-   private Doctor doctor;
-   private int visit;
-   
-}

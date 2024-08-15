@@ -1,9 +1,0 @@
-package com.healsmart.dtos;
-
-public class WardDTO {
-	private Long wardId;
-	private String type;
-	private double charges;
-	private double availability;
-	private double maxCapacity;
-}

@@ -1,9 +1,0 @@
-package com.healsmart.services;
-
-import com.healsmart.entities.Doctor;
-
-public interface DoctorService {
-//    public Doctor addDoctor(DoctorDTO doctorDTO);
-//    List<Doctor> getAllDoctors();
-    
-}
